@@ -1,0 +1,75 @@
+<%@ page pageEncoding="UTF-8" %>
+<style>
+
+.btn-back {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 10px 0; /* Adjust margin as needed */
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #fff; /* Text color */
+    background-color: #6c757d; /* A neutral gray, customize this! */
+    border: 1px solid #6c757d;
+    border-radius: 5px; /* Or your theme's border-radius */
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.btn-back:hover {
+    background-color: #5a6268; /* Darker shade on hover */
+    border-color: #545b62;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-back i { /* For Font Awesome icon */
+    margin-right: 7px;
+}
+
+/* Example Alternate Style - more like your primary buttons */
+.btn-back-alt {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 10px 0;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #007bff; /* Primary color text */
+    background-color: transparent;
+    border: 1px solid #007bff; /* Primary color border */
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn-back-alt:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn-back-alt i {
+    margin-right: 7px;
+}
+</style>
+<%
+    String backButtonUrl = (String) request.getAttribute("backButtonUrl");
+    String backButtonText = (String) request.getAttribute("backButtonText");
+    String backButtonClass = (String) request.getAttribute("backButtonClass"); // For custom styling
+
+    if (backButtonUrl == null || backButtonUrl.trim().isEmpty()) {
+        backButtonUrl = request.getContextPath() + "/home"; // Default fallback URL (e.g., home page)
+    }
+    if (backButtonText == null || backButtonText.trim().isEmpty()) {
+        backButtonText = "Go Back"; // Default text
+    }
+    if (backButtonClass == null || backButtonClass.trim().isEmpty()) {
+        backButtonClass = "btn-back"; // Default CSS class
+    }
+%>
+<a href="<%= backButtonUrl %>" class="<%= backButtonClass %>">
+    <%-- Optionally add an icon, e.g., using Font Awesome if you have it setup --%>
+     <i class="fas fa-arrow-left"></i> 
+    <%= backButtonText %>
+</a>

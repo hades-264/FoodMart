@@ -1,0 +1,341 @@
+@charset "UTF-8";
+	:root {
+	    --primary-green: #4CAF50; /* A vibrant food-mart green */
+	    --dark-green: #388E3C;
+	    --primary-blue: #2196F3; /* For links/accents if needed */
+	    --text-dark: #333;
+	    --text-light: #f8f8f8;
+	    --bg-light-blue: #e0f7fa; /* Lighter background accent */
+	    --shadow-color: rgba(0,0,0,0.2);
+	    --form-bg: #ffffff;
+	    --error-red: #e74c3c;
+	    --success-green-light: #d4edda;
+	    --success-green-dark: #155724;
+	}
+	
+	body {
+	    font-family: 'Poppins', sans-serif;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    min-height: 100vh;
+	    margin: 0;
+	    padding: 20px;
+	    box-sizing: border-box;
+	    color: var(--text-dark);
+	
+	}
+	
+	.form-container {
+	    background: var(--form-bg);
+	    padding: 40px 35px; /* Increased padding */
+	    border-radius: 15px; /* More rounded corners */
+	    box-shadow: 0 15px 30px var(--shadow-color), 0 5px 10px rgba(0,0,0,0.1); /* Deeper, softer shadow */
+	    width: 100%;
+	    max-width: 750px; /* Increased max-width to accommodate two columns */
+	    border: 1px solid rgba(255,255,255,0.7); /* Subtle white border */
+	    backdrop-filter: blur(8px); /* Frosted glass effect */
+	    animation: fadeInScale 0.6s ease-out; /* Smooth animation on load */
+	}
+	
+	@keyframes fadeInScale {
+	    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+	    to { opacity: 1; transform: scale(1) translateY(0); }
+	}
+	
+	.form-container h2 {
+	    font-family: 'Playfair Display', serif; /* Elegant font for title */
+	    text-align: center;
+	    margin-top: 0;
+	    margin-bottom: 30px; /* More space */
+	    color: var(--primary-green); /* FoodMart brand color */
+	    font-size: 2.2em; /* Larger title */
+	    font-weight: 700;
+	    position: relative;
+	    padding-bottom: 10px;
+	}
+	.form-container h2::after {
+	    content: '';
+	    position: absolute;
+	    left: 50%;
+	    bottom: 0;
+	    transform: translateX(-50%);
+	    width: 80px;
+	    height: 4px;
+	    background-color: var(--primary-green);
+	    border-radius: 2px;
+	}
+	
+	/* Styles for Two-Column Layout */
+	.form-columns {
+	    display: grid;
+	    grid-template-columns: 1fr 1fr; /* Two equal columns */
+	    gap: 25px 35px; /* Vertical and horizontal gap between items */
+	}
+	
+	/* Ensure form-group itself doesn't have extra width on columns */
+	.form-columns .form-group {
+	    margin-bottom: 0; /* Remove default margin-bottom from form-group for grid cells */
+	}
+	
+	/* Adjust spacing for elements not in columns (e.g., button, links) */
+	.btn-submit {
+	    margin-top: 25px; /* Add space above the button */
+	}
+	
+	/* Responsive adjustment for smaller screens */
+	@media (max-width: 768px) {
+	    .form-columns {
+	        grid-template-columns: 1fr; /* Single column on small screens */
+	        gap: 20px; /* Adjust gap for single column */
+	    }
+	    .form-container {
+	        max-width: 90%; /* Allow form to take more width on smaller screens */
+	        padding: 30px 20px;
+	    }
+	}
+	
+	
+	.form-group label {
+	    display: block;
+	    font-weight: 500; /* Softer bold */
+	    margin-bottom: 8px; /* More space below label */
+	    color: var(--text-dark);
+	    font-size: 0.95em;
+	}
+	.form-group input[type="text"],
+	.form-group input[type="email"],
+	.form-group input[type="tel"],
+	.form-group input[type="password"] {
+	    width: 100%;
+	    padding: 12px 15px; /* More padding */
+	    border-radius: 8px; /* More rounded */
+	    border: 1px solid #dcdcdc; /* Softer border */
+	    box-sizing: border-box;
+	    font-size: 1em;
+	    color: var(--text-dark);
+	    transition: all 0.3s ease; /* Smooth transitions */
+	    background-color: #fcfcfc; /* Slightly off-white background */
+	}
+	.form-group input:focus {
+	    border-color: var(--primary-blue);
+	    outline: none;
+	    box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2); /* Soft blue glow on focus */
+	}
+	
+	/* Styles for the container wrapping input and eye icon */
+	.password-input-container {
+	    position: relative;
+	    width: 100%;
+	}
+	
+	/* Style for the eye icon */
+	.toggle-password {
+	    position: absolute;
+	    right: 15px;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    cursor: pointer;
+	    color: #999;
+	    font-size: 1.1em;
+	    transition: color 0.2s ease;
+	    z-index: 2; /* Ensure icon is above input */
+	}
+	.toggle-password:hover {
+	    color: #555;
+	}
+	
+	/* --- CSS TO HIDE BROWSER'S DEFAULT EYE ICON --- */
+	/* For Webkit browsers (Chrome, Safari, etc.) */
+	input::-ms-reveal,
+	input::-webkit-reveal {
+	    display: none !important;
+	}
+	
+	/* Optional: Also hide the clear button often seen in Edge/IE */
+	input::-ms-clear {
+	    display: none;
+	}
+	/* --- END CSS TO HIDE BROWSER'S DEFAULT EYE ICON --- */
+	
+	
+	.btn-submit {
+	    font-weight: 600; /* More prominent */
+	    font-size: 1.1em; /* Larger text */
+	    border-radius: 10px; /* More rounded */
+	    background-color: var(--primary-green); /* FoodMart green */
+	    color: white;
+	    padding: 12px 20px; /* More padding */
+	    border: none;
+	    width: 100%;
+	    cursor: pointer;
+	    transition: all 0.3s ease; /* Smooth transition */
+	    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3); /* Green shadow */
+	}
+	.btn-submit:hover {
+	    background-color: var(--dark-green); /* Darker green on hover */
+	    transform: translateY(-3px); /* Subtle lift effect */
+	    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+	}
+	.btn-submit:active {
+	    transform: translateY(0); /* Press effect */
+	    box-shadow: 0 3px 8px rgba(76, 175, 80, 0.2);
+	}
+	
+	.login-link, .message-area {
+	    text-align: center;
+	    margin-top: 25px; /* Increased margin */
+	}
+	.login-link p {
+	    color: #666;
+	    font-size: 0.95em;
+	}
+	.login-link a {
+	    color: var(--primary-blue); /* Consistent blue link */
+	    text-decoration: none;
+	    font-weight: 500;
+	    transition: color 0.2s ease;
+	}
+	.login-link a:hover {
+	    text-decoration: underline;
+	    color: #0056b3;
+	}
+	
+	/* Message styles */
+	.message {
+	    padding: 12px 15px;
+	    margin-bottom: 20px; /* More space below message */
+	    border-radius: 8px;
+	    text-align: center;
+	    font-weight: 500;
+	    line-height: 1.4;
+	    animation: fadeIn 0.5s ease-out; /* Smooth fade-in for messages */
+	}
+	.message.success {
+	    background-color: var(--success-green-light);
+	    color: var(--success-green-dark);
+	    border: 1px solid #a8e6b1;
+	}
+	.message.error, .message.form-error {
+	    background-color: #ffe6e6; /* Lighter red background */
+	    color: var(--error-red);
+	    border: 1px solid #ffb3b3;
+	}
+	
+	/* Field-specific errors (red text below input) */
+	.error-message {
+	    color: var(--error-red);
+	    font-size: 0.88em;
+	    margin-top: 8px; /* More space */
+	    display: block;
+	    font-weight: 400;
+	}
+	
+	/* Copyright Notice */
+	.copyright {
+	    text-align: center;
+	    margin-top: 40px; /* More separation */
+	    font-size: 0.85em;
+	    color: #999; /* Softer color */
+	}
+	
+	@keyframes fadeIn {
+	    from { opacity: 0; }
+	    to { opacity: 1; }
+	}
+	
+	/* Pop-up Overlay and Confirmation Pop-up Styles */
+	.popup-overlay {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for pop-up */
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    z-index: 1000;
+	    opacity: 0;
+	    visibility: hidden;
+	    transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+	
+	.popup-overlay.visible {
+	    opacity: 1;
+	    visibility: visible;
+	}
+	
+	.confirmation-popup {
+	    background: var(--form-bg);
+	    padding: 30px 40px;
+	    border-radius: 15px;
+	    box-shadow: 0 15px 30px var(--shadow-color), 0 5px 10px rgba(0,0,0,0.1);
+	    width: 100%;
+	    max-width: 500px; /* Max-width for pop-up */
+	    text-align: center;
+	    transform: scale(0.9);
+	    transition: transform 0.3s ease;
+	    border: 1px solid rgba(255,255,255,0.7); /* Subtle white border */
+	    backdrop-filter: blur(8px); /* Frosted glass effect */
+	}
+	
+	.popup-overlay.visible .confirmation-popup {
+	    transform: scale(1);
+	}
+	
+	.confirmation-popup h2 {
+	    font-family: 'Playfair Display', serif;
+	    color: var(--primary-green);
+	    margin-top: 0;
+	    margin-bottom: 20px;
+	    font-size: 2em;
+	}
+	.confirmation-popup p {
+	    color: var(--text-dark);
+	    font-size: 1.05em;
+	    line-height: 1.6;
+	    margin-bottom: 15px;
+	}
+	.user-details {
+	    margin-top: 25px;
+	    margin-bottom: 30px;
+	    text-align: left;
+	    padding: 20px;
+	    background-color: #f0fdf0; /* Lighter green for details */
+	    border: 1px solid var(--success-green-light);
+	    border-radius: 10px;
+	}
+	.user-details p {
+	    font-size: 1em;
+	    margin-bottom: 10px;
+	    color: var(--text-dark);
+	}
+	.user-details strong {
+	    color: var(--dark-green); /* Darker green for strong text */
+	}
+	.user-id-highlight {
+	    font-weight: 700;
+	    color: var(--error-red); /* Keep user ID prominent */
+	    font-size: 1.3em;
+	    display: inline-block; /* To allow padding/margin if needed */
+	    padding: 2px 5px;
+	    background-color: #fff0f0; /* Light red background */
+	    border-radius: 5px;
+	}
+	.btn-ok {
+	    font-weight: 600; font-size: 1.1em; border-radius: 10px;
+	    background-color: var(--primary-blue); color: white; padding: 12px 30px;
+	    border: none; cursor: pointer; text-decoration: none;
+	    display: inline-block; transition: all 0.3s ease;
+	    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+	}
+	.btn-ok:hover {
+	    background-color: #0056b3;
+	    transform: translateY(-3px);
+	    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+	}
+	.btn-ok:active {
+	    transform: translateY(0);
+	    box-shadow: 0 3px 8px rgba(33, 150, 243, 0.2);
+	}
