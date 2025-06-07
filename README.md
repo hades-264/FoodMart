@@ -1,1 +1,2 @@
-FoodMart - An E-Commerce platform for Grocery management.
+##FoodMart 
+- An E-Commerce platform for Grocery management.
